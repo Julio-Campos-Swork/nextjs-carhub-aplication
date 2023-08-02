@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image";
 import {CustomButtonProps} from '@/types'
-const CustomButton = ({title, containerStyles, handleClick, btntype}: CustomButtonProps) => {
+const CustomButton = ({title, containerStyles, handleClick, btntype, textStyles, rightIcon, isDisable}: CustomButtonProps) => {
   return (
     <button
     disabled={false}
@@ -9,7 +9,12 @@ const CustomButton = ({title, containerStyles, handleClick, btntype}: CustomButt
     className={`custom-btn ${containerStyles}`}
     onClick={handleClick}
     >
-<span className={`flex-1`}>{title}</span>
+<span className={`flex-1 ${textStyles}`}>{title}</span>
+{rightIcon && (
+  <div className="relative w-6 h-6">
+    <Image src={rightIcon} alt="icon" fill className="object-contain" />
+  </div>
+)}
     </button>
   )
 }
